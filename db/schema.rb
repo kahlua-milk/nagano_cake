@@ -10,62 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_17_034731) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "cart_products", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "product_id"
-    t.integer "quantity", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "order_products", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "order_id"
-    t.integer "quantity", null: false
-    t.integer "price", null: false
-    t.integer "production_status", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "name", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.integer "postage", null: false
-    t.integer "payment_option", null: false
-    t.integer "total_amount", null: false
-    t.integer "order_status", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name", null: false
-    t.text "explanation", null: false
-    t.integer "price", null: false
-    t.integer "sale_status", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
