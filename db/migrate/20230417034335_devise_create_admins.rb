@@ -34,9 +34,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
-      #登録日の
-      t.datetime :created_at, null: false, default: -> { 'NOW()' }
-      t.datetime :updated_at, null: false, default: -> { 'NOW()' }
+      #登録日の追加
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     end
 
     add_index :admins, :email,                unique: true
