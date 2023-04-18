@@ -5,7 +5,7 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li>
-            <%= link_to "マイページ", class: 'nav-link text-light' %>
+            <%= link_to "マイページ", customers_path, class: 'nav-link text-light' %>
           </li>
           <li>
             <%= link_to "商品一覧" ,class: 'nav-link text-light'  %>
@@ -43,7 +43,7 @@
             <%= link_to "新規一覧",class: 'nav-link text-light' %>
           </li>
           <li>
-            <%= link_to "ログイン", class: 'nav-link text-light' %>
+            <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light' %>
           </li>
         <% end %>
         </ul>

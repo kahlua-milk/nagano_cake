@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-has_one_attached :profile_image
+
+ has_one_attached :image
 
   enum genre: { cake: 0, pudding: 1, baked_goods: 2 }
 
