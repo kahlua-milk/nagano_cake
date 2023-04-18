@@ -1,0 +1,53 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li>
+            <%= link_to "マイページ", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "商品一覧" ,class: 'nav-link text-light'  %>
+          </li>
+          <li>
+            <%= link_to  "カート",class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to "商品一覧", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "注文履歴一覧", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "About", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "新規一覧",class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "ログイン", class: 'nav-link text-light' %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
