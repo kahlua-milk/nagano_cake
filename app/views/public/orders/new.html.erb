@@ -1,43 +1,59 @@
 <h3>注文情報入力</h3>
 
 
-<%= form_with model: @order do |f| %>
+<%= form_with model: @order, url: check new_order_path do |f| %>
 
   <h3>支払方法</h3>
-    <%= f.radio_button :payment_option, 0, checked: true %>クレジットカード
-    <%= f.radio_button :payment_option, 1 %>銀行振込
+    <%= f.radio_button :payment_option, 0, checked: true %>
+    <%= f.label :payment_option_0, "クレジットカード" %>
 
-<h3>お届け先</h3>
-  <%= f.radio_button :%>ご自身の住所
-    <p>
-      <%= @customer.postal_code %>
-      <%= @customer.address %>
-    </p>
-    <P>
-      <%= @customer.last_name %>
-      <%= @customer.first_name %>
-    </P>
+    <%= f.radio_button :payment_option, 1 %>
+    <%= f.radio_button :payment_option_1,%>銀行振込
 
+  <h3>お届け先</h3>
+    <!--自身の住所-->
+    <div>
+      <%= f.radio_button :address_number, 1 %>
+      <%= f.label :address_number_1, "ご自身の住所" %>
+      <p>
+        <%= @customer.postal_code %>
+        <%= @customer.address %>
+      </p>
+      <P>
+        <%= @customer.last_name %>
+        <%= @customer.first_name %>
+      </P>
+    </div>
 
-<%= f.radio_button :%>登録済住所から選択
-  <%= collection_select(:order_id, @customer, :id, )
+    <!--登録済住所-->
+    <div>
+      <%= f.radio_button :address_number, 2 %>
+      <%= f.label :address_number_2, "登録済住所から選択" %>
+      <P>
+        <%= collection_select(:registered, current_customer.addresses.all, :id, :full_address) %>
+      </P>
+    </div>
 
-<%= f.radio_button :%>新しいお届け先
-  <div>
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code, placeholder: "0000000" %>
-  </div>
-  <div>
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-  </div>
-  <div>
-    <%= f.label :name, "宛名" %>
-    <%= f.text_field :name, placeholder: "令和道子" %>
-  </div>
+    <!--新しい届け先-->
+    <div>
+      <%= f.radio_button :address_number, 3 %>
+      <%= f.label :address_number_3, "新しいお届け先" %>
+      <div>
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+        <%= f.text_field :postal_code, placeholder: "0000000" %>
+      </div>
+      <div>
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+      </div>
+      <div>
+        <%= f.label :name, "宛名" %>
+        <%= f.text_field :name, placeholder: "令和道子" %>
+      </div>
+    </div>
 
+    <!--確認ボタン-->
+    <div>
+      <%= f.submit "確認画面へ進む" %>
+    </div>
 
-
-
-
-<%= f.submit "確認画面へ進む" %>
