@@ -1,5 +1,34 @@
 ja:
   enums:
+    order_product:
+      production_status:
+        cannot_start: "着手不可"
+        unfinished: "製作待ち"
+        production: "製作中"
+        completion: "製作完了"
+
+
+ja:
+  enums:
+    product:
+      sale_status:
+        sale: "販売中"
+        stop_selling: "販売停止中"
+
+
+ja:
+  enums:
+    order:
+      order_status:
+        not_payment: "入金待ち"
+        confirmation: "入金確認"
+        production: "製作中"
+        shipping: "発送準備中"
+        shipped: "発送済み"
+
+
+ja:
+  enums:
     order:
       payment_option:
         credit_card: "クレジットカード"

@@ -1,12 +1,18 @@
 class Admin::OrdersController < ApplicationController
 
-  def new
-    @order = Order.new
-    @customer = Customer.find(current_customer.id)
-
+  def show
   end
 
 
-  def thanks
+  def update
   end
+
+
+
+
+
+
+
+
+
 end
