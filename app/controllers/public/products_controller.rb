@@ -1,6 +1,6 @@
 class Public::ProductsController < ApplicationController
   def new
-    @item = Item.new
+    @product = Product.new
     @genres = Genre.all
   end
   

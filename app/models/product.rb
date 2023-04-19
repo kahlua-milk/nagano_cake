@@ -1,6 +1,5 @@
 class Product < ApplicationRecord
-
- has_one_attached :image
+  has_one_attached :image
 
  has_many :cart_products, dependent: :destroy
  has_many :order_products, dependent: :destroy
@@ -17,6 +16,9 @@ class Product < ApplicationRecord
     end
     genres
   end
+
+  enum sale_status: { '販売停止中': 0, '販売中': 1 }, _default: 0
+  enum genre: { cake: 0, pudding: 1, baked_goods: 2 }
 
   def self.genres_i18n
     I18n.t('activerecord.attributes.product.genre')
