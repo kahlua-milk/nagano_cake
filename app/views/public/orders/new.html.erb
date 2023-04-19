@@ -1,20 +1,23 @@
-<h3>注文情報入力</h3>
+<h3 class="bg-secondary-subtle">注文情報入力</h3>
 
 
-<%= form_with model: @order, url: check new_order_path do |f| %>
+  <%= form_with model: @order, url: confirm_path do |f| %>
 
-  <h3>支払方法</h3>
-    <%= f.radio_button :payment_option, 0, checked: true %>
-    <%= f.label :payment_option_0, "クレジットカード" %>
+    <h3>支払方法</h3>
+    <div>
+      <%= f.radio_button :payment_option, Order.payment_options.key(0), checked: true %>
+      <%= f.label :payment_option_credit_card, Order.payment_options_i18n[:credit_card] %>
+    </div>
+    <div>
+      <%= f.radio_button :payment_option, Order.payment_options.key(1) %>
+      <%= f.label :payment_option_transfer, Order.payment_options_i18n[:transfer] %>
+    </div>
 
-    <%= f.radio_button :payment_option, 1 %>
-    <%= f.radio_button :payment_option_1,%>銀行振込
-
-  <h3>お届け先</h3>
+    <h3>お届け先</h3>
     <!--自身の住所-->
     <div>
-      <%= f.radio_button :address_number, 1 %>
-      <%= f.label :address_number_1, "ご自身の住所" %>
+      <%= f.radio_button :select_address, 0, checked: true %>
+      <%= f.label :select_address_1, "ご自身の住所" %>
       <p>
         <%= @customer.postal_code %>
         <%= @customer.address %>
@@ -27,17 +30,17 @@
 
     <!--登録済住所-->
     <div>
-      <%= f.radio_button :address_number, 2 %>
-      <%= f.label :address_number_2, "登録済住所から選択" %>
+      <%= f.radio_button :select_address, 1 %>
+      <%= f.label :select_address_2, "登録済住所から選択" %>
       <P>
-        <%= collection_select(:registered, current_customer.addresses.all, :id, :full_address) %>
+        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
       </P>
     </div>
 
     <!--新しい届け先-->
     <div>
-      <%= f.radio_button :address_number, 3 %>
-      <%= f.label :address_number_3, "新しいお届け先" %>
+      <%= f.radio_button :select_address, 2 %>
+      <%= f.label :select_address_3, "新しいお届け先" %>
       <div>
         <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
         <%= f.text_field :postal_code, placeholder: "0000000" %>
@@ -54,6 +57,8 @@
 
     <!--確認ボタン-->
     <div>
-      <%= f.submit "確認画面へ進む" %>
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
     </div>
+
+  <% end %>
 

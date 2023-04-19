@@ -10,14 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_04_18_104933) do
-=======
-
-=======
 ActiveRecord::Schema.define(version: 2023_04_18_071341) do
->>>>>>> 5ca6c870c93aa766219c98b9172f8a20ec8bd68d
-
+ActiveRecord::Schema.define(version: 2023_04_18_104933) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -147,8 +142,5 @@ ActiveRecord::Schema.define(version: 2023_04_18_071341) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-<<<<<<< HEAD
   add_foreign_key "items", "genres"
-=======
->>>>>>> 5ca6c870c93aa766219c98b9172f8a20ec8bd68d
 end
