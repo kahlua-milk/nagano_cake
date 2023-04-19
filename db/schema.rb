@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_04_18_104933) do
-=======
-ActiveRecord::Schema.define(version: 2023_04_18_071341) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,7 +39,6 @@ ActiveRecord::Schema.define(version: 2023_04_18_071341) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
->>>>>>> 22c14b18ff136a801ecd715b05a9a8c251389462
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -143,10 +139,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_071341) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
-  add_foreign_key "items", "genres"
-=======
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
->>>>>>> 22c14b18ff136a801ecd715b05a9a8c251389462
+  add_foreign_key "items", "genres"
 end
