@@ -1,9 +1,18 @@
 class Product < ApplicationRecord
-  has_one_attached :image
+
+ has_one_attached :image
 
  has_many :cart_products, dependent: :destroy
  has_many :order_products, dependent: :destroy
  belongs_to :genre
+
+
+  with_options presence: true do
+    validates :name
+    validates :explanation
+    validates :price
+    validates :sale_status
+    validates :image
 
 
   enum sale_status: { sale: 0, stop_selling: 1 }
@@ -23,6 +32,10 @@ class Product < ApplicationRecord
   def self.genres_i18n
     I18n.t('activerecord.attributes.product.genre')
   end
+
+  def self.sale_status_i18n
+    I18n.t('activerecord.attributes.product.sale_status')
+
 
   def with_tax_price
     (price * 1.1).floor
