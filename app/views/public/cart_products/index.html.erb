@@ -1,8 +1,19 @@
-<h3 class="bg-secondary-subtle">注文情報確認</h3>
-
 <div class="container">
-   <div class="row">
-    <div class="col-md-6">
+  <div class="row">
+    <div class="col-md-3">
+      <h3 class="bg-secondary-subtle">ショッピングカート</h3>
+    </div>
+    <div class="col-md-1 offset-md-8">
+      <h3 class="bg-secondary-subtle">ショッピングカート</h3>
+    </div>
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
       <table class="table table-bordered">
         <thead>
           <tr class="table-secondary">
@@ -10,6 +21,7 @@
             <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -20,6 +32,7 @@
             <td><%= (cart.product.price * 1.1).floor %></td>
             <td><%= cart.quantity %></td>
             <td><%= %></td>
+            <td>削除する</td>
           </tr>
           <% end %>
         </tbody>

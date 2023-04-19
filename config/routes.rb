@@ -19,8 +19,11 @@ Rails.application.routes.draw do
     get "/customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
     patch "/customers/withdrawal" => "customers#withdrawal", as: "withdrawal"
 
-    # cart_items コントローラー
-    resources :cart_items, only: [:index, :update, :create, :destroy]
+    # cart_products コントローラー
+    get "cart_items" => "cart_products#index"
+    post "cart_items" => "cart_products#create"
+    patch "/cart_items/:id" => "cart_products#update"
+    delete "/cart_items/:id" => "cart_products#destroy"
     delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all"
 
     # orders コントローラー
