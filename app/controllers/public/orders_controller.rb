@@ -7,6 +7,18 @@ class Public::OrdersController < ApplicationController
   end
 
 
+  def create
+    cart_products = current_customer.cart_products.all
+    @order = current_customer.orders.new(order_params)
+    if @order.save
+      cart_products.each do |cart_product|
+        order_product = OrderProduct.new
+        order_product.product_id = cart_product.product_id
+        order_product.product_id = @order.id
+        order_product.product_quantity = cart_product.quantity
+  end
+
+
   def confirm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
@@ -36,9 +48,9 @@ class Public::OrdersController < ApplicationController
     else
       render :new
     end
-
     @cart_products = CartProduct.all
   end
+
 
 
   def thanks

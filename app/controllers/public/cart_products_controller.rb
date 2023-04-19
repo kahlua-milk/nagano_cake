@@ -1,2 +1,52 @@
 class Public::CartProductsController < ApplicationController
+  before_action :authenticate_customer!
+
+
+  def index
+    @cart_products = current_customer.cart_products.all
+    @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
+  end
+
+
+  def create
+    @cart_product = current_user.cart_items.build(cart_item_params)
+    @cart_products = current_user.cart_items.all
+    @cart_products.each do |cart_product|
+      if cart_product.product_id == @cart_product.product_id
+        new_quantity = cart_product.quantity + @cart_product.quantity.to_i
+        cart_product.update_attribute(:quantity, new_quantity)
+        @cart_product.delete
+      end
+    end
+    @cart_product.save
+    redirect_to cart_items_path, notice: "カートに商品が入りました"
+  end
+
+
+  def update
+    # @cart_product = CartProduct.find(params[:id])
+  end
+
+
+  def destroy
+    cart_product = CartProduct.find(params[:id])
+    if cart_product.customer_id == current_customer.id
+      cart_product.destroy
+    end
+  end
+
+
+  def destroy_all
+    # if cart_product.customer_id == current_customer.id
+    CartProduct.destroy
+    current_customer.cart_product.destroy_all
+    redirect_to cart_items_path, notice: "カートが空になりました"
+  end
+
+
+
+  private
+  def cart_product_params
+    params.require(:cart_product).permit(:product_id, :quantity, :customer_id)
+  end
 end
