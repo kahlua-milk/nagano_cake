@@ -14,11 +14,11 @@
         </thead>
 
         <tbody>
-          <%= @cart_products.each do |cart| %>
+          <%= @cart_products.each do |cart_product| %>
           <tr>
-            <td><%= cart.product.name %></td>
-            <td><%= (cart.product.price * 1.1).floor %></td>
-            <td><%= cart.quantity %></td>
+            <td><%= cart_product.product.name %></td>
+            <td><%= cart_product.product.with_tax_price.to_s(:delimited) %></td>
+            <td><%= cart_product.quantity %></td>
             <td><%= %></td>
           </tr>
           <% end %>
