@@ -27,8 +27,6 @@ class Public::CartProductsController < ApplicationController
     @cart_product = CartProduct.find(params[:id])
     if @cart_product.update(cart_product_params)
       redirect_to cart_items_path, notice: "カート内商品の数量を変更しました"
-    else
-      render "index"
     end
   end
 
