@@ -14,8 +14,17 @@ class Public::OrdersController < ApplicationController
       cart_products.each do |cart_product|
         order_product = OrderProduct.new
         order_product.product_id = cart_product.product_id
-        order_product.product_id = @order.id
-        order_product.product_quantity = cart_product.quantity
+        order_product.order_id = @order.id
+        order_product.quantity = cart_product.quantity
+        order_product.price = cart_product.product.price
+        order_product.save
+      end
+      redirect_to thanks_path
+      cart_products.destroy_all
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
   end
 
 
@@ -48,19 +57,28 @@ class Public::OrdersController < ApplicationController
     else
       render :new
     end
-    @cart_products = CartProduct.all
+    @cart_products = current_customer.cart_products.all
+    @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
+
   end
 
 
 
   def thanks
   end
+  
+  
+  def index
+    @orders = Order.find(params[:id])
+  end
 
 
 
   private
   def order_params
-    params.require(:order).permit(:payment_option, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_option, :postal_code, :address, :name, :postage, :total_amount)
   end
+
+
 
 end
