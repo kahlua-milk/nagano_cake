@@ -36,8 +36,9 @@
           </td>
           <td><%= cart_product.subtotal.to_s(:delimited) %></td>
           <td>
-            <%= link_to "削除する", cart_items_path(cart_product.id),
-                      method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= form_with model: cart_product, url: cart_items_path(cart_product.id), method: :delete, local: true do |f| %>
+              <%= f.submit "削除する", class: "btn btn-sm btn-danger" %>
+            <% end %>
           </td>
         </tr>
         <% end %>

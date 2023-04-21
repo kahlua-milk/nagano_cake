@@ -32,7 +32,7 @@ class Public::CartProductsController < ApplicationController
 
 
   def destroy
-    cart_product = CartProduct.find(params[:id])
+    @cart_product = CartProduct.find(params[:id])
     if cart_product.customer_id == current_customer.id
       cart_product.destroy
       redirect_to cart_items_path, notice: "カート内商品を削除しました"
@@ -45,6 +45,7 @@ class Public::CartProductsController < ApplicationController
     CartProduct.destroy
     current_customer.cart_product.destroy_all
     redirect_to cart_items_path, notice: "カートが空になりました"
+    # end
   end
 
 
