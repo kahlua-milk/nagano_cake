@@ -1,5 +1,5 @@
 <!--ジャンル検索機能-->
-<%= form_tag products_path, method: :get do %>
+<%= form_tag items_path, method: :get do %>
   <%= select_tag :genre, options_for_select(Product.genres.keys), include_blank: true %>
   <%= submit_tag '検索' %>
 <% end %>
