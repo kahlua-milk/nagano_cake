@@ -1,18 +1,26 @@
-<h2>管理者ログイン</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-3 bg-light"> 
+      <h4>管理者ログイン</h4>
+    </div>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com" %>
+  <div class="row">
+    <div class="col-2"><%= f.label :"メールアドレス" %></div>
+    <div class="col-1"><%= f.email_field :email, :size => "60", autofocus: true, placeholder: "sample@example.com" %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :"パスワード" %>
-    <%= f.password_field :password %>
+  <div class="row">
+    <div class="col-2"><%= f.label :"パスワード" %></div>
+    <div class="col-1"><%= f.password_field :password, :size => "60" %></div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="row">
+    <div class="offset-3">
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    </div>
   </div>
+</div>
 <% end %>
 
