@@ -1,9 +1,10 @@
-<h5><span class="bg-light"> 注文履歴一覧 </span></h5>
-
-
 <div class="container">
   <div class="row">
 
+    <div class="col-md-1"></div>
+
+    <div class="col-md-9">
+      <h5><span class="bg-light"> 注文履歴一覧 </span></h5>
       <table class="table">
         <thead class="table-secondary">
           <tr>
@@ -35,9 +36,10 @@
           <% end %>
         </tbody>
       </table>
-
-      <%= paginate @orders %>
-
     </div>
+
+    <div class="col-md-2"></div>
+
   </div>
+</div>
 
