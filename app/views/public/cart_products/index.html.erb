@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <h5><span class="bg-light">　ショッピングカート　</span></h5>
+      <h5><span class="bg-light"> ショッピングカート </span></h5>
     </div>
     <div class="col-md-1 offset-md-8">
       <%= link_to "カートを空にする", destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
@@ -25,7 +25,7 @@
       <tbody>
         <% @cart_products.each do |cart_product| %>
         <tr>
-          <td><%= image_tag cart_product.product.image, size:"50x50 %></td>
+          <td><%= image_tag cart_product.product.image, size:"50x50" %></td>
           <td><%= cart_product.product.name %></td>
           <td><%= cart_product.product.with_tax_price.to_s(:delimited) %></td>
           <td>
