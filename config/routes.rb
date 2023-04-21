@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "homes#top"
     get "about" => "homes#about"
-    resources :products, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
     # customers コントローラー
@@ -30,6 +29,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     post "/orders/confirm" => "orders#confirm", as: "confirm"
     get "/orders/thanks" => "orders#thanks", as: "thanks"
+
+    # products コントローラー
+    get "items" => "products#index"
+    get "/items/:id" => "products#show"
+
   end
 
 
@@ -43,11 +47,19 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "homes#top"
-    resources :products, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
+
+    # products コントローラー
+    get "items" => "products#index"
+    get "/items/new" => "products#new"
+    post "items" => "products#create"
+    get "/items/:id" => "products#show"
+    get "/items/:id/edit" => "products#edit"
+    patch "/items/:id" => "products#update"
+
   end
 
 
