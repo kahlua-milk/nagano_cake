@@ -17,7 +17,7 @@ end
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_items_path(@product)
+      redirect_to admin_path(@product)
     else
       @genres = Product.genres
       render 'new'
