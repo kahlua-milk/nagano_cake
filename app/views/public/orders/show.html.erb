@@ -1,0 +1,95 @@
+<h3 class="bg-secondary-subtle">　注文履歴詳細　</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>注文情報</strong></p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-secondary">注文日</td>
+            <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">配送先</td>
+            <td>
+              <p>〒<%= @order.postal_code %></p>
+              <p><%= @order.address %></p>
+              <p><%= @order.name %></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-secondary">支払方法</td>
+            <td><% @order.payment %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">ステータス</td>
+            <td>
+              <%= @order.order_statuses.keys.to_a %>
+              <%= @order.order_statuses.values.to_a %>
+            </td>
+          </tr>
+        </tbody>
+      </div>
+
+
+    <div class="col-md-3">
+      <p><strong>請求情報</strong></p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-secondary">商品合計</td>
+            <td><%= @total(:delimited) %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">配送料</td>
+            <td><%= @order.postage %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary"><strong>ご請求額</strong></td>
+            <td><%= @order.total_amount(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+      <div class="col-md-3"></div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-8">
+        <p><strong>注文内容</strong></p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>単価 (税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @order_products.each do |order_product| %>
+            <tr>
+              <td><%= order_product.product.name %></td>
+              <td><%= order_product.price %></td>
+              <td><%= order_product.quantity %></td>
+              <td><%= order_product.price * order_product.quantity(:delimited) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+
+
+
+

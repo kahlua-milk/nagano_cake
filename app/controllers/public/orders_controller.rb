@@ -15,8 +15,8 @@ class Public::OrdersController < ApplicationController
         order_product = OrderProduct.new
         order_product.product_id = cart_product.product_id
         order_product.order_id = @order.id
-        order_product.quantity = cart_product.quantity
-        order_product.price = cart_product.product.price
+        order_product.quantity = cart_product.quantity 
+        order_product.price = cart_product.product.with_tax_price
         order_product.save
       end
       redirect_to thanks_path
@@ -66,10 +66,16 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
-  
-  
+
+
   def index
-    @orders = Order.find(params[:id])
+    @orders = current_customer.orders.all
+  end
+
+
+  def show
+    @order = Order.find(params[:id])
+    @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
   end
 
 

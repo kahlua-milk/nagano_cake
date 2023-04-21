@@ -24,7 +24,10 @@ class Public::CartProductsController < ApplicationController
 
 
   def update
-    # @cart_product = CartProduct.find(params[:id])
+    @cart_product = CartProduct.find(params[:id])
+    if @cart_product.update(cart_product_params)
+      redirect_to cart_items_path, notice: "カート内商品の数量を変更しました"
+    end
   end
 
 
@@ -32,6 +35,7 @@ class Public::CartProductsController < ApplicationController
     cart_product = CartProduct.find(params[:id])
     if cart_product.customer_id == current_customer.id
       cart_product.destroy
+      redirect_to cart_items_path, notice: "カート内商品を削除しました"
     end
   end
 

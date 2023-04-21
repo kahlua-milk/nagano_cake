@@ -30,6 +30,8 @@
           <td>
             <%= cart_product.select :quantity, *[1..10], required:true,
                    options_for_select(cart, {selected: cart.quantity.to_i} ) %>
+            <%= link_to "変更", cart_items_path(cart_product.id),
+                      method: :patch, class: "btn btn-sm btn-success" %>
           </td>
           <td><%= cart_product.subtotal.to_s(:delimited) %></td>
           <td>
