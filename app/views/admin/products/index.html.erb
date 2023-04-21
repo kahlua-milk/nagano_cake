@@ -15,8 +15,8 @@
         <td><%= product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.price %></td>
-        <td><%= Product.genres_i18n[product.genre_id] %></td>
-        <td><%= Product.sale_status_i18n[product.sale_status] %></td>
+        <td><%= Genre.find_by(id: product.genre_id)&.name %></td>
+        <td><%= Product.sale_statuses[product.sale_status] %></td>
       </tr>
     <% end %>
   </tbody>
