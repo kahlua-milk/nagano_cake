@@ -4,11 +4,3 @@
   <%= submit_tag '検索' %>
 <% end %>
 
-<!--ジャンルの追加機能-->
-<%= form_for @genre do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <%= f.submit '追加する', class: 'btn btn-primary' %>
-<% end %>

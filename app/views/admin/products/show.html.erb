@@ -1,35 +1,16 @@
-<div class="row">
-  <div class="col-md-3">
-    <!-- ここにジャンルの部分テンプレート -->
-    <%#= render ' ' %>
+<h1>商品詳細</h1>
+
+<div class="product-details">
+  <div class="product-image">
+    <%= image_tag @product.image %>
   </div>
-  <div class="col-md-6">
-    <%#= image_tag @product.image_url %>
-  </div>
-  <div class="col-md-3">
-    <table>
-      <tbody>
-        <tr>
-          <th>Name:</th>
-          <td><%= @items.name %></td>
-        </tr>
-        <tr>
-          <th>Description:</th>
-          <td><%= @items.description %></td>
-        </tr>
-        <tr>
-          <th>Price:</th>
-          <td><%= @items.price %></td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-      <%= form_for @cart_item, url: cart_items_path do |f| %>
-        <%= f.hidden_field :product_id, value: @item.id %>
-        <%= f.label :quantity %>
-        <%= f.number_field :quantity, min: 1, value: 1 %>
-        <%= f.submit 'カートに入れる', class: 'btn btn-primary', formaction: cart_path %>
-      <% end %>
-    </p>
+  <div class="product-info">
+    <h2><%= @product.name %></h2>
+    <p><%= @product.explanation %></p>
+    <p>ジャンル: <%= @product.genre.name %></p>
+    <p>税込み価格: <%= number_to_currency(@product.with_tax_price) %></p>
+    <p>販売ステータス: <%= Product.sale_statuses.key(@product.sale_status) %></p>
   </div>
 </div>
+
+<%= link_to "編集する", edit_admin_product_path(@product) %>
