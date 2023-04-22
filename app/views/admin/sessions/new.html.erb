@@ -7,18 +7,18 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row">
-    <div class="col-2"><%= f.label :"メールアドレス" %></div>
-    <div class="col-1"><%= f.email_field :email, :size => "60", autofocus: true, placeholder: "sample@example.com" %></div>
+    <div class="col-2 mt-4"><%= f.label :"メールアドレス" %></div>
+    <div class="col-1 mt-4"><%= f.email_field :email, :size => "60", autofocus: true, placeholder: "sample@example.com" %></div>
   </div>
 
   <div class="row">
-    <div class="col-2"><%= f.label :"パスワード" %></div>
-    <div class="col-1"><%= f.password_field :password, :size => "60" %></div>
+    <div class="col-2 mt-2"><%= f.label :"パスワード" %></div>
+    <div class="col-1 mt-2"><%= f.password_field :password, :size => "60" %></div>
   </div>
 
   <div class="row">
-    <div class="offset-3">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <div class="col-5 offset-2 mt-4">
+      <%= f.submit "ログイン", class: "btn btn-primary w-50" %>
     </div>
   </div>
 </div>
