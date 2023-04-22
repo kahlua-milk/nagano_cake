@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @customer = current_customer.id
+    @customer = current_customer
     # @customer = Customer.find(current_customer.id)
   end
 
@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
         order_product = OrderProduct.new
         order_product.product_id = cart_product.product_id
         order_product.order_id = @order.id
-        order_product.quantity = cart_product.quantity 
+        order_product.quantity = cart_product.quantity
         order_product.price = cart_product.product.with_tax_price
         order_product.save
       end
