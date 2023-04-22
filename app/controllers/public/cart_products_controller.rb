@@ -42,8 +42,8 @@ class Public::CartProductsController < ApplicationController
 
   def destroy_all
     # if cart_product.customer_id == current_customer.id
-    CartProduct.destroy
-    current_customer.cart_product.destroy_all
+    # CartProduct.destroy
+    current_customer.cart_products.destroy_all
     redirect_to cart_items_path, notice: "カートが空になりました"
     # end
   end

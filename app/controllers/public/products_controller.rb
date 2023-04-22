@@ -1,6 +1,6 @@
 class Public::ProductsController < ApplicationController
 
-  
+
 def index
   @genre = Genre.all
   @product = Product.all
@@ -9,7 +9,7 @@ end
 
 
 
-  
+
 def show
   @product = Product.find(params[:id])
   @cart_product = CartProduct.new
@@ -19,11 +19,12 @@ def show
     @cart_products = []
   end
 end
-  
+
 
   private
 
   def genre_params
     params.require(:genre).permit(:name)
   end
+
 end
