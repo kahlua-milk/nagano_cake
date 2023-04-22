@@ -12,7 +12,7 @@
       <% @products.each do |product| %>
         <tr>
           <td>
-            <%= link_to items_path(product) do %>
+            <%= link_to items_path(product.id) do %>
               <%= image_tag product.image, size: "100x100" %>
             <% end %>
           </td>
