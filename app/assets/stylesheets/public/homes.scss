@@ -1,3 +1,39 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+.main-visual {
+  position: relative;
+}
+
+
+img {
+  width: 100%;
+}
+
+
+p {
+  color: #ffffff; /* 文字色 */
+  font-size: 24px; /* 文字の大きさ */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+// p{
+//     position: absolute;
+//     top:50%;
+//     left:50%;
+//     transform: translate(-50%,-50%);
+//     padding:0;
+//     margin:0;
+//     font-size:30px;
+//     color: red;
+// }
+
+
+
+// image_tag "top_image.jpg", size: '600x300'
