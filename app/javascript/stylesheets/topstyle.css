@@ -6,12 +6,12 @@
 }
 
 
-img {
+.main-visual-image {
   width: 80%;
 }
 
 
-p {
+.main-text {
   color: #ffffff;
   font-size: 12px;
   position: absolute;
@@ -21,7 +21,7 @@ p {
 }
 
 
-h2 {
+.headline {
   margin-top: 5px;
   margin-bottom: 5px;
 }
