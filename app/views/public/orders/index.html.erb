@@ -25,11 +25,16 @@
             <p><%= order.address %></p>
             <p><%= order.name %></p>
           </td>
-          <td><%= order.order.product.name %></td>
-          <td><%= order.total_amount(:delimited) %>円</td>
           <td>
-            <%= Order.order_statuses.keys.to_a %>
-            <%= Order.order_statuses.values.to_a %>
+            <% order.order_products.each do |product| %>
+              <%= product.product.name %>
+            <% end %>
+          </td>
+          <td><%= order.total_amount %>円</td>
+          <td>
+            <%= order.order_status %>
+            <%#= Order.order_statuses.keys.to_a %>
+            <%#= Order.order_statuses.values.to_a %>
           </td>
           <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primaryr" %></td>
         </tr>

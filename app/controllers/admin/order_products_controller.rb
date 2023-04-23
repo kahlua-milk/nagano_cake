@@ -5,6 +5,7 @@ class Admin::OrderProductsController < ApplicationController
     @order = Order.find(params[:order_id])
     @order_product = OrderProduct.find(params[:id])
     @order_products = @order.order_products.all
+    
 
     # 製作ステータスが「製作中」のときに、注文ステータスを「製作中」に更新する。
     is_updated = true
