@@ -30,32 +30,36 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
-      @order.postal_code = current_customer.postal_code
-      @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
-    elsif params[:order][:select_address] == "1"
-      @address = Address.find(params[:order][:address_id])
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
-      @order.postal_code = order_params[:postal_code]
-      @order.address = order_params[:address]
-      @order.name = order_params[:name]
-    # その前にセーブしないとダメでは?
-    else
-      render :new
-    end
+    if params[:order][:select_address]
+      if params[:order][:select_address] == "0"
+        @order.postal_code = current_customer.postal_code
+        @order.address = current_customer.address
+        @order.name = current_customer.first_name + current_customer.last_name
+      elsif params[:order][:select_address] == "1"
+        @address = Address.find(params[:order][:address_id])
+        @order.postal_code = @address.postal_code
+        @order.address = @address.address
+        @order.name = @address.name
+      elsif params[:order][:select_address] == "2"
+        @order.postal_code = order_params[:postal_code]
+        @order.address = order_params[:address]
+        @order.name = order_params[:name]
+      # その前にセーブしないとダメでは?
+      else
+        render :new
+      end
+
 
     # この記述ではないかも
-    @order = Order.new(order_params)
-    if params[:order][:payment_option] == Order.payment_options.key(0)
-      @order.payment = Order.payment_options_i18n[:credit_card]
-    elsif params[:order][:payment_option] == Order.payment_options.key(1)
-      @order.payment = Order.payment_options_i18n[:transfer]
-    else
-      render :new
+    # @order = Order.new(order_params)
+    elsif params[:order][:payment_option]
+      if params[:order][:payment_option] == Order.payment_options.key(0)
+        @order.payment_option = Order.payment_options_i18n[:credit_card]
+      elsif params[:order][:payment_option] == Order.payment_options.key(1)
+        @order.payment_option = Order.payment_options_i18n[:transfer]
+      else
+        render :new
+      end
     end
     @cart_products = current_customer.cart_products.all
     @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }

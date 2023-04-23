@@ -1,4 +1,7 @@
 class Public::HomesController < ApplicationController
-    def top
-end
+
+
+  def top
+    @products = Product.order('id DESC').limit(4)
+  end
 end
