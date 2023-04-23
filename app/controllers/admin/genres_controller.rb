@@ -13,6 +13,10 @@ class Admin::GenresController < ApplicationController
       render 'index'
     end
   end
+  
+  def edit
+  @genre = Genre.find(params[:id])
+  end
 
   def update
     @genre = Genre.find(params[:id])
