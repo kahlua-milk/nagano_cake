@@ -1,25 +1,25 @@
-<div class="row">
+<div class="row mt-3">
   <div class="col-md-3">
     <!-- ここにジャンルの部分テンプレート -->
       <%= render 'public/products/genre' %>
   </div>
   <div class="col-md-3">
-    <%= image_tag @product.image, size: "100x100" %>
+    <%= image_tag @product.image, size: "200x200" %>
   </div>
   <div class="col-md-6">
     <table>
       <tbody>
         <tr>
-          <th>Name:</th>
-          <td><%= @product.name %></td>
+         
+          <h1><%= @product.name %></h1>
         </tr>
         <tr>
-          <th>Description:</th>
-          <td><%= @product.explanation %></td>
+       
+          <h2><%= @product.explanation %></h2>
         </tr>
         <tr>
-          <th>Price:</th>
-          <td><%= @product.price %></td>
+          
+         <h1><%= "¥#{( @product.price * 1.1).floor}" %>（税込）</h1>
         </tr>
       </tbody>
     </table>

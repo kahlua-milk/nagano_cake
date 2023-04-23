@@ -1,16 +1,36 @@
-<h1>商品詳細</h1>
-
 <div class="product-details">
-  <div class="product-image">
-    <%= image_tag @product.image %>
-  </div>
-  <div class="product-info">
-    <h2><%= @product.name %></h2>
-    <p><%= @product.explanation %></p>
-    <p>ジャンル: <%= @product.genre.name %></p>
-    <p>税込み価格: <%= number_to_currency(@product.with_tax_price) %></p>
-    <p>販売ステータス: <%= Product.sale_statuses.key(@product.sale_status) %></p>
+  <div class="row">
+    <div class="product-image">
+      <%= image_tag @product.image, size: "100x100" %>
+    </div>
+    <div>
+      <div class="product-info">
+        <table>
+          <tr>
+            <th>商品名</th>
+            <td><%= @product.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @product.explanation %></td>
+          </tr>
+          <% if @product.genre.present? %>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @product.genre.name %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <th>税込み価格</th>
+            <td><%= number_to_currency(@product.with_tax_price) %></td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td><%= Product.sale_statuses.key(@product.sale_status) %></td>
+          </tr>
+        </table>
+        <%= link_to "編集する", admin_edit_items_path(@product) %>
+      </div>
+    </div>
   </div>
 </div>
-
-<%= link_to "編集する", admin_path(@product) %>
