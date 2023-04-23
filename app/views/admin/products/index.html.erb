@@ -15,8 +15,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        
         <td><%= product.id %></td>
-        <td><%= product.name %></td>
+        <td><%= link_to "/admin/items/#{product.id}" do %>
+        <%= product.name %>
+        <%end%></td>
         <td><%= product.price %></td>
         <td><%= Genre.find_by(id: product.genre_id)&.name %></td>
         <td><%= Product.sale_statuses[product.sale_status] %></td>

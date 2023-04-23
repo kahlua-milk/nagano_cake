@@ -5,12 +5,15 @@
     <%= image_tag @product.image %>
   </div>
   <div class="product-info">
-    <h2><%= @product.name %></h2>
-    <p><%= @product.explanation %></p>
+   <div>
+  <h2><%= @product.name %></h2>
+  <p><%= @product.explanation %></p>
+  <% if @product.genre.present? %>
     <p>ジャンル: <%= @product.genre.name %></p>
-    <p>税込み価格: <%= number_to_currency(@product.with_tax_price) %></p>
-    <p>販売ステータス: <%= Product.sale_statuses.key(@product.sale_status) %></p>
-  </div>
+  <% end %>
+  <p>税込み価格: <%= number_to_currency(@product.with_tax_price) %></p>
+  <p>販売ステータス: <%= Product.sale_statuses.key(@product.sale_status) %></p>
+</div>
 </div>
 
-<%= link_to "編集する", admin_path(@product) %>
+<%= link_to "編集する", admin_edit_items_path(@product) %>
