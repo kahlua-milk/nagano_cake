@@ -1,0 +1,33 @@
+
+.main-visual {
+  position: relative;
+  margin-top: 30px;
+  /*background-position: 50px 100px;*/
+}
+
+
+img {
+  width: 80%;
+}
+
+
+p {
+  color: #ffffff; /* 文字色 */
+  font-size: 12px; /* 文字の大きさ */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-70%,-50%);
+}
+
+
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.new-products {
+  display: flex;
+  flex-wrap: wrap;
+}

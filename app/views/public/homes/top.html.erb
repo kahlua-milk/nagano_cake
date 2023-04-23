@@ -9,22 +9,26 @@
       <div class="main-visual">
         <%= image_tag "top_image.jpg", size: '600x300' %>
 
-        <!--<div class="main-visual-content">-->
-          <p class="main-text">
-            ようこそ、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。
-          </p>
-        </div>
+        <p class="main-text">
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
       </div>
 
+      <h2><strong>新着商品</strong></h2>
 
-
-
-    <h2>新着商品</h2>
-
-
+      <div class="new-products">
+        <% @products.each do |product| %>
+        <div>
+          <%= image_tag product.image, size:"200x100" %>
+          <%= product.name %>
+          <%#= product.price.with_tax_price.to_s(:delimited) %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
