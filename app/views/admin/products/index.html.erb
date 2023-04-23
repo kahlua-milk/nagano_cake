@@ -1,28 +1,29 @@
-
 <h1>商品一覧</h1>
+<div class="row justify-content-center">
   <div class="col-md-9">
-    <table>
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.id %></td>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= Genre.find_by(id: product.genre_id)&.name %></td>
-        <td><%= Product.sale_statuses[product.sale_status] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜き価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to "/admin/items/#{product.id}" do %>
+              <%= product.name %>
+            <% end %></td>
+            <td><%= product.price %></td>
+            <td><%= Genre.find_by(id: product.genre_id)&.name %></td>
+            <td><%= Product.sale_statuses[product.sale_status] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

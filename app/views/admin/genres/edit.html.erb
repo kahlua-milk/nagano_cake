@@ -1,0 +1,6 @@
+<%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
+  <%= f.label :name, 'ジャンル名' %>
+  <%= f.text_field :name %>
+
+  <%= f.submit '更新する', class: 'btn btn-primary' %>
+<% end %>
