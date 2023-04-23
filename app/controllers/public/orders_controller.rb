@@ -32,26 +32,20 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    if params[:order][:select_address]
-      if params[:order][:select_address] == "0"
-        @order.postal_code = current_customer.postal_code
-        @order.address = current_customer.address
-        @order.name = current_customer.last_name + current_customer.first_name
-      elsif params[:order][:select_address] == "1"
-        @address = Address.find(params[:order][:address_id])
-        @order.postal_code = @address.postal_code
-        @order.address = @address.address
-        @order.name = @address.name
-      else params[:order][:select_address] == "2"
-        @order.postal_code = order_params[:postal_code]
-        @order.address = order_params[:address]
-        @order.name = order_params[:name]
-      # その前にセーブしないとダメ?
-      end
-
-
-      # この記述ではないかも
-      # @order = Order.new(order_params)
+    # if params[:order][:select_address]
+    if params[:order][:select_address] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:select_address] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:select_address] == "2"
+      @order.postal_code = order_params[:postal_code]
+      @order.address = order_params[:address]
+      @order.name = order_params[:name]
     else
       render :new
     end
@@ -73,7 +67,9 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
+    @order_products = @order.order_products.all
+    @total = @order_products.inject(0) { |sum, product| sum + product.subtotal }
+    # @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
   end
 
 

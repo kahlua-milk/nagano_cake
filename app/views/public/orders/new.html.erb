@@ -11,12 +11,12 @@
     <div class="form-group">
       <div>
         <%= f.radio_button :payment_option, Order.payment_options.key(0), checked: true %>
-        <%= f.label :payment_option_credit_card, Order.payment_options_i18n[:credit_card] %>
+        <%= f.label :payment_option, Order.payment_options_i18n[:credit_card] %>
       </div>
 
       <div>
         <%= f.radio_button :payment_option, Order.payment_options.key(1) %>
-        <%= f.label :payment_option_transfer, Order.payment_options_i18n[:transfer] %>
+        <%= f.label :payment_option, Order.payment_options_i18n[:transfer] %>
       </div>
     </div>
 
