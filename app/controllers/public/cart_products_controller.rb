@@ -9,8 +9,8 @@ class Public::CartProductsController < ApplicationController
 
 
   def create
-    @cart_product = current_user.cart_items.build(cart_item_params)
-    @cart_products = current_user.cart_items.all
+    @cart_product = current_customer.cart_products.build(cart_product_params)
+    @cart_products = current_customer.cart_products.all
     @cart_products.each do |cart_product|
       if cart_product.product_id == @cart_product.product_id
         new_quantity = cart_product.quantity + @cart_product.quantity.to_i
@@ -19,24 +19,24 @@ class Public::CartProductsController < ApplicationController
       end
     end
     @cart_product.save
-    redirect_to cart_items_path, notice: "カートに商品が入りました"
+    redirect_to cart_items_path(@cart_product), notice: "カートに商品が入りました"
   end
 
 
   def update
     @cart_product = CartProduct.find(params[:id])
     if @cart_product.update(cart_product_params)
-      redirect_to cart_items_path, notice: "カート内商品の数量を変更しました"
+      redirect_to cart_items_path(@cart_product), notice: "カート内商品の数量を変更しました"
     end
   end
 
 
   def destroy
     @cart_product = CartProduct.find(params[:id])
-    if cart_product.customer_id == current_customer.id
-      cart_product.destroy
+    # if cart_product.customer_id == current_customer
+    @cart_product.destroy
       redirect_to cart_items_path, notice: "カート内商品を削除しました"
-    end
+    # end
   end
 
 
