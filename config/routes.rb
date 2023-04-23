@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     # cart_products コントローラー
     get "cart_items" => "cart_products#index"
     post "cart_items" => "cart_products#create"
-    patch "/cart_items/:id" => "cart_products#update"
+    patch "/cart_items/:id" => "cart_products#update", as: "cart_item_update"
     delete "/cart_items/destroy_all" => "cart_products#destroy_all", as: "destroy_all"
-    delete "/cart_items/:id" => "cart_products#destroy"
+    delete "/cart_items/:id" => "cart_products#destroy", as: "cart_item_destroy"
 
     # orders コントローラー
     resources :orders, only: [:new, :create, :index, :show]

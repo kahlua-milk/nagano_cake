@@ -7,7 +7,7 @@
 
     <%= form_with model: @order, url: confirm_path, local: true do |f| %>
 
-    <p><strong>支払方法</strong></p>
+    <div><strong>支払方法</strong></div>
     <div class="form-group">
       <div>
         <%= f.radio_button :payment_option, Order.payment_options.key(0), checked: true %>
@@ -35,12 +35,14 @@
       </P>
 
     <!--登録済住所-->
+    <div>
       <div class="form-group">
         <%= f.radio_button :select_address, 1 %>
         <%= f.label :select_address_1, "登録済住所から選択" %>
-        <P>
+        <div class="form-group">
           <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
-        </P>
+        </div>
+      </div>
       </div>
 
      <!--新しい届け先-->
