@@ -1,0 +1,53 @@
+
+.main-visual {
+  position: relative;
+  margin-top: 30px;
+  /*background-position: 50px 100px;*/
+}
+
+
+img {
+  width: 80%;
+}
+
+
+p {
+  color: #ffffff;
+  font-size: 12px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-70%,-50%);
+}
+
+
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.new-products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.new-products-box {
+  margin-bottom: 5px;
+  margin-left: 10px;
+  /*background-position: center;*/
+}
+
+
+.item-image {
+  width: 200px;
+  height: 100px;
+  /*max-width: 100%;*/
+}
+
+
+.products-link {
+  text-align: right;
+  margin-bottom: 10px;
+}
