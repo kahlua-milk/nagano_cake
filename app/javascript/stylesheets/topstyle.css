@@ -12,8 +12,8 @@ img {
 
 
 p {
-  color: #ffffff; /* 文字色 */
-  font-size: 12px; /* 文字の大きさ */
+  color: #ffffff;
+  font-size: 12px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -30,4 +30,24 @@ h2 {
 .new-products {
   display: flex;
   flex-wrap: wrap;
+}
+
+
+.new-products-box {
+  margin-bottom: 5px;
+  margin-left: 10px;
+  /*background-position: center;*/
+}
+
+
+.item-image {
+  width: 200px;
+  height: 100px;
+  /*max-width: 100%;*/
+}
+
+
+.products-link {
+  text-align: right;
+  margin-bottom: 10px;
 }
