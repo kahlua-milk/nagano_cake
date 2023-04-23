@@ -1,10 +1,12 @@
-<div class="product-details">
+<div class="d-flex justify-content-center">
   <div class="row">
-    <div class="product-image">
-      <%= image_tag @product.image, size: "100x100" %>
+    <div class="col-md">
+      <div class="product-image">
+        <%= image_tag @product.image %>
+      </div>
     </div>
-    <div>
-      <div class="product-info">
+    <div class="col-md">
+      <div class="product-info text-lg">
         <table>
           <tr>
             <th>商品名</th>
