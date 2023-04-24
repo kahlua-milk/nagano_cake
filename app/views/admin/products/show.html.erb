@@ -1,35 +1,39 @@
-<div class="product-details">
+<div class="d-flex justify-content-center">
   <div class="row">
-    <div class="product-image">
-      <%= image_tag @product.image, size: "100x100" %>
+    <div class="col-md-4">
+      <div class="product-image">
+        <%= image_tag @product.image, class: "img-fluid" %>
+      </div>
     </div>
-    <div>
+    <div class="col-md-8">
       <div class="product-info">
-        <table>
-          <tr>
-            <th>商品名</th>
-            <td><%= @product.name %></td>
-          </tr>
-          <tr>
-            <th>商品説明</th>
-            <td><%= @product.explanation %></td>
-          </tr>
-          <% if @product.genre.present? %>
+        <table class="table">
+          <tbody>
             <tr>
-              <th>ジャンル</th>
-              <td><%= @product.genre.name %></td>
+              <th scope="row">商品名</th>
+              <td><%= @product.name %></td>
             </tr>
-          <% end %>
-          <tr>
-            <th>税込み価格</th>
-            <td><%= number_to_currency(@product.with_tax_price) %></td>
-          </tr>
-          <tr>
-            <th>販売ステータス</th>
-            <td><%= Product.sale_statuses.key(@product.sale_status) %></td>
-          </tr>
+            <tr>
+              <th scope="row">商品説明</th>
+              <td><%= @product.explanation %></td>
+            </tr>
+            <% if @product.genre.present? %>
+              <tr>
+                <th scope="row">ジャンル</th>
+                <td><%= @product.genre.name %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <th scope="row">税込み価格</th>
+              <td><%= number_to_currency(@product.with_tax_price) %></td>
+            </tr>
+            <tr>
+              <th scope="row">販売ステータス</th>
+              <td><%= @product.sale_status_i18n %></td>
+            </tr>
+          </tbody>
         </table>
-        <%= link_to "編集する", admin_edit_items_path(@product) %>
+        <%= link_to "編集する", admin_edit_items_path(@product), class: "btn btn-primary" %>
       </div>
     </div>
   </div>

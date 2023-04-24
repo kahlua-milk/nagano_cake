@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   enum sale_status: { sale: 0, stop_selling: 1 }, _prefix: true
 
 
+
   with_options presence: true do
     validates :name
     validates :explanation

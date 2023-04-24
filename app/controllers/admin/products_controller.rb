@@ -1,17 +1,13 @@
 class Admin::ProductsController < ApplicationController
+  before_action :require_admin_login
   def new
     @product = Product.new
     @genres = Genre.all
   end
 
 def index
-  @products = if params[:genre].present?
-                Product.where(genre: params[:genre])
-              else
-                Product.all
-              end
-  @genres = Genre.all
-  @new_genre = Genre.new
+   @products = Product.all
+   @products = Product.page(params[:page]).per(10)
 end
 
   def create
@@ -43,6 +39,12 @@ end
   end
 
   private
+  
+    def require_admin_login
+    unless admin_signed_in?
+      redirect_to root_path
+    end
+  end
 
   def product_params
     params.require(:product).permit(:name, :explanation, :price, :sale_status, :genre_id, :image)
