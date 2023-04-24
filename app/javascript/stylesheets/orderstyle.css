@@ -2,3 +2,9 @@
 .order_product_list {
    list-style-type: none;
 }
+
+
+.thanks_text{
+  text-align:center;
+  padding:130px 0;
+}

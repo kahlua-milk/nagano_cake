@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <table>
+      <table class="table table-borderless table-sm">
         <tbody>
           <tr>
             <th>支払方法</th>
@@ -31,16 +31,18 @@
           <!--自身の住所-->
           <tr>
             <td>
-              <div class="form-group">
-                <%= f.radio_button :select_address, 0, checked: true %>
-                <%= f.label :select_address, "ご自身の住所" %>
-                  <p>
-                    〒<%= @customer.postal_code %>
-                    <%= @customer.address %><br>
-                    <%= @customer.last_name %>
-                    <%= @customer.first_name %>
-                  </p>
-              </div>
+              <!--<div class="form-group">-->
+              <%= f.radio_button :select_address, 0, checked: true %>
+              <%= f.label :select_address, "ご自身の住所" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              〒<%= @customer.postal_code %>
+              <%= @customer.address %><br>
+              <%= @customer.last_name %>
+              <%= @customer.first_name %>
+              <!--</div>-->
             </td>
           </tr>
 
@@ -53,7 +55,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td colspan="3">
               <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
             </td>
           </tr>
@@ -61,32 +63,24 @@
 
           <!--新しい届け先-->
           <!--<div class="form-horizontal">-->
+          <!--<div class="form-group">-->
           <tr>
-            <div class="form-group">
-              <td>
-                <%= f.radio_button :select_address, 2 %>
-                <%= f.label :select_address, "新しいお届け先" %>
-              </td>
-            </div>
+            <td>
+              <%= f.radio_button :select_address, 2 %>
+              <%= f.label :select_address, "新しいお届け先" %>
+            </td>
           </tr>
           <tr>
-            <div class="form-group">
-              <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
-              <td><%= f.text_field :postal_code, placeholder: "0000000" %></td>
-            </div>
+            <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+            <td><%= f.text_field :postal_code, placeholder: "0000000" %></td>
           </tr>
           <tr>
-            <div class="form-group">
-              <td><%= f.label :address, "住所" %></td>
-              <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
-            </div>
+            <td><%= f.label :address, "住所" %></td>
+            <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: 60 %></td>
           </tr>
           <tr>
-            <div class="form-group">
-              <td><%= f.label :name, "宛名" %></td>
-              <td><%= f.text_field :name, placeholder: "令和道子" %></td>
-            </div>
-            </div>
+            <td><%= f.label :name, "宛名" %></td>
+            <td><%= f.text_field :name, placeholder: "令和道子" %></td>
           </tr>
         </tbody>
       </table>
