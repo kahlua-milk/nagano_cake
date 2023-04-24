@@ -3,7 +3,7 @@
     <div class="col-md-3 mt-3">
       <h5><span class="bg-light"> ショッピングカート </span></h5>
     </div>
-    <div class="col-md-3 offset-md-6">
+    <div class="col-md-2 offset-md-7">
       <%= link_to "カートを空にする", destroy_all_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に空にしますか？" %>
     </div>
   </div>
@@ -25,19 +25,19 @@
       <tbody>
         <% @cart_products.each do |cart_product| %>
         <tr>
-          <td>
+          <td style="vertical-align:middle;">
             <%= image_tag cart_product.product.image, size:"80x50" %>
             <%= cart_product.product.name %>
           </td>
-          <td><%= cart_product.product.with_tax_price.to_s(:delimited) %></td>
-          <td align="center">
+          <td style="vertical-align:middle;"><%= cart_product.product.with_tax_price.to_s(:delimited) %></td>
+          <td style="vertical-align:middle;", align="center">
             <%= form_with model: cart_product, url: cart_item_update_path(cart_product.id), method: :patch, local: true do |f| %>
               <%= f.select :quantity, *[1..10], required:true %>
               <%= f.submit "変更", class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
-          <td><%= cart_product.subtotal.to_s(:delimited) %></td>
-          <td align="center">
+          <td style="vertical-align:middle;"><%= cart_product.subtotal.to_s(:delimited) %></td>
+          <td style="vertical-align:middle;", align="center">
             <%= form_with model: cart_product, url: cart_item_destroy_path(cart_product.id), method: :delete, local: true do |f| %>
               <%= f.submit "削除する", class: "btn btn-sm btn-danger" %>
             <% end %>
