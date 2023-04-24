@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     delete "/cart_items/:id" => "cart_products#destroy", as: "cart_item_destroy"
 
     # orders コントローラー
-    resources :orders, only: [:new, :create, :index, :show]
     post "/orders/confirm" => "orders#confirm", as: "confirm"
     get "/orders/thanks" => "orders#thanks", as: "thanks"
+    resources :orders, only: [:new, :create, :index, :show]
 
     # products コントローラー
     get "items" => "products#index"
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
-  
+
     # products コントローラー
     get "items" => "products#index"
     get "/items/new" => "products#new"
