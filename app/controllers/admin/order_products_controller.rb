@@ -2,10 +2,11 @@ class Admin::OrderProductsController < ApplicationController
 
 
   def update
-    @order = Order.find(params[:order_id])
+    # @order = Order.find(params[:order_id])
+    @order = Order.find(params[:id])
     @order_product = OrderProduct.find(params[:id])
     @order_products = @order.order_products.all
-    
+    @order_product.production_status = 0
 
     # 製作ステータスが「製作中」のときに、注文ステータスを「製作中」に更新する。
     is_updated = true
@@ -17,7 +18,7 @@ class Admin::OrderProductsController < ApplicationController
            is_updated = false
          end
        end
-       @order.update(order_status: 3)
+       @order.update(order_status: 3) if is_updated
     end
     redirect_to admin_order_path(@order)
   end

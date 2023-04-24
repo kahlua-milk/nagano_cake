@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   has_many :order_products, dependent: :destroy
   belongs_to :genre
 
-  enum sale_status: { sale: 0, stop_selling: 1 }
+  enum sale_status: { sale: 0, stop_selling: 1 }, _prefix: true
 
 
   with_options presence: true do

@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
-  
+
     # products コントローラー
     get "items" => "products#index"
     get "/items/new" => "products#new"
