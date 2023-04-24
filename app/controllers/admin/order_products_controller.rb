@@ -2,15 +2,14 @@ class Admin::OrderProductsController < ApplicationController
 
 
   def update
-    # @order = Order.find(params[:order_id])
-    @order = Order.find(params[:id])
     @order_product = OrderProduct.find(params[:id])
+    @order = @order_product.order
     @order_products = @order.order_products.all
     @order_product.production_status = 0
 
     # 製作ステータスが「製作中」のときに、注文ステータスを「製作中」に更新する。
     is_updated = true
-    if @order_product.update(order_product_params)
+    if @order_product.update!(order_product_params)
        @order.update(order_status: 2) if @order_product.production_status == "production"
     # 紐付いている注文商品の製作ステータスがすべて製作完了になった際に注文ステータスを「発送準備中」に更新する。
        @order_products.each do |order_product|

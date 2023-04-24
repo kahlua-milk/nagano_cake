@@ -28,10 +28,8 @@
               <%= order.customer.first_name %>
             </td>
             <td>
-              <% order.order_products.each do |product| %>
-                <%#= product.quantity %>
-                <%= product.total_quantity %>
-              <% end %>
+              <%= order.order_products.sum(:quantity) %>
+
             </td>
             <td><%= order.order_status_i18n %></td>
           </tr>
