@@ -76,17 +76,15 @@
 
 
 ## 開発環境
-#### Rails 6.1.7.3
+ Rails 6.1.7.3
 
 
 ## Gem
-#### ・devise
-#### ・bootstrap
-#### ・kaminari
-#### ・enum_help
+ ・devise
+ ・bootstrap
+ ・kaminari
+ ・enum_help
 
 
 ## 作成者
-#### チーム かるーあみるく
-
-
+チーム かるーあみるく
