@@ -4,8 +4,12 @@
       <!-- ここにジャンルの部分テンプレート -->
       <%= render 'public/products/genre' %>
     </div>
-    <div class="col-md-6">
-      <p class="text-center mb-4">商品一覧（全<%= @products.count %>件）</p>
+<div class="col-md-6">
+  <% if @selected_genre.present? %>
+    <p class="text-center mb-4"><%= @selected_genre.name %>の商品一覧（全<%= @products.total_count %>件）</p>
+  <% else %>
+    <p class="text-center mb-4">商品一覧（全<%= @products.total_count %>件）</p>
+  <% end %>
       <div class="row">
         <% @products.each do |product| %>
           <div class="col-3">
