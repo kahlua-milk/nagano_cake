@@ -157,6 +157,8 @@ Rails 6.1.7.3
 
 ・enum_help
 
+## その他
+管理者ログイン用アカウント: admin@admin / testid
 
 
 ## 作成者
