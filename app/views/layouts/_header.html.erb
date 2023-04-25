@@ -3,18 +3,19 @@
     <p><%= link_to "NaganoCake", root_path, class: 'nav-link text-dark display-4' %></p>
     <div class="container">
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        
+
         <div class="row">
           <div class="input-group ml-5">
             <input type="text", placeholder="search">
             <button type="button" id="button-addon2"><i class="fas fa-search"></i></button>
           </div>
         </div>
-        
+
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li class='text-dark m-1'>
-            <h4>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</h4>
+            <!--<h4>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</h4>-->
+            <h5>ようこそ、<br><%= current_customer.last_name + current_customer.first_name %>さん！</h5>
           </li>
           <li>
             <%= link_to "マイページ", customers_path, class: 'nav-link text-dark border rounded ml-4' %>
