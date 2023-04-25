@@ -25,7 +25,7 @@
             <% end %>
             <tr>
               <th scope="row">税込み価格</th>
-              <td><%= number_to_currency(@product.with_tax_price) %></td>
+              <td><%= number_to_currency(@product.with_tax_price, unit: "￥", precision: 0) %></td>
             </tr>
             <tr>
               <th scope="row">販売ステータス</th>

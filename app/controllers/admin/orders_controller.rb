@@ -3,9 +3,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_products = @order.order_products.all
-    # cart_products = current_customer.cart_products.all
     @total = @order_products.inject(0) { |sum, product| sum + product.subtotal }
-    # @total = cart_products.inject(0) { |sum, product| sum + product.subtotal }
   end
 
 
