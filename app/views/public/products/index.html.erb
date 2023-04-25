@@ -10,6 +10,7 @@
   <% else %>
     <p class="text-center mb-4">商品一覧（全<%= @products.total_count %>件）</p>
   <% end %>
+  
       <div class="row">
         <% @products.each do |product| %>
           <div class="col-3">
