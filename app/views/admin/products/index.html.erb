@@ -1,6 +1,11 @@
-<h1>商品一覧</h1>
 <div class="row justify-content-center">
-  <div class="col-md-9">
+  <div class="row">
+ 
+      <h1 class="text-center">商品一覧</h1>
+      <%= link_to admin_items_new_path do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -21,10 +26,10 @@
             <td><%= product.price %></td>
             <td><%= Genre.find_by(id: product.genre_id)&.name %></td>
             <td><%= product.sale_status_i18n %></td>
+          </tr>
         <% end %>
-         </tr>
       </tbody>
-       <td><%= paginate @products %></td>
+      <td><%= paginate @products %></td>
     </table>
   </div>
 </div>
