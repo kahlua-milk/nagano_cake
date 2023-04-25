@@ -15,7 +15,6 @@ end
     if @product.save
       redirect_to admin_path(@product)
     else
-      @genres = Product.genres
       render 'new'
     end
   end
