@@ -21,8 +21,10 @@
       <div class="new-products">
         <% @products.each do |product| %>
         <div class="new-products-box">
-          <%= image_tag product.image, class: "item-image" %>
-          <div><%= product.name %></div>
+          <%= link_to "/items/#{product.id}" do %>
+            <%= image_tag product.image, class: "item-image" %>
+          <% end %>
+          <div class="item-name"><%= product.name %></div>
           <div>￥<%= (product.price. * 1.1).floor.to_s(:delimited) %></div>
         </div>
         <% end %>
