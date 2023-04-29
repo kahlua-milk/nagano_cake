@@ -1,0 +1,8 @@
+<!--ジャンル検索機能-->
+<h6><strong>ジャンル検索</strong></h6>
+<%= form_tag items_path, method: :get do %>
+<%#= select_tag :genre, options_for_select(Product.genre.keys), include_blank: true %>
+<%= select_tag :genre, options_for_select(Genre.pluck(:name)), include_blank: true %>
+  <%= submit_tag '検索' %>
+<% end %>
+

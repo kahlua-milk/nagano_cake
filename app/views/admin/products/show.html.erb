@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="product-image">
+        <%= image_tag @product.image, class: "img-fluid" %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="product-info">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">商品名</th>
+              <td><%= @product.name %></td>
+            </tr>
+            <tr>
+              <th scope="row">商品説明</th>
+              <td><%= @product.explanation %></td>
+            </tr>
+            <% if @product.genre.present? %>
+              <tr>
+                <th scope="row">ジャンル</th>
+                <td><%= @product.genre.name %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <th scope="row">税込み価格</th>
+              <td><%= number_to_currency(@product.with_tax_price, unit: "￥", precision: 0) %></td>
+            </tr>
+            <tr>
+              <th scope="row">販売ステータス</th>
+              <td><%= @product.sale_status_i18n %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to "編集する", admin_edit_items_path(@product), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

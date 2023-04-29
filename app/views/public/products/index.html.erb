@@ -1,0 +1,34 @@
+<% if @products.any? %>
+  <div class="row">
+    <div class="col-md-3">
+      <!-- ここにジャンルの部分テンプレート -->
+      <%= render 'public/products/genre' %>
+    </div>
+<div class="col-md-6">
+  <% if @selected_genre.present? %>
+    <p class="text-center mb-4"><%= @selected_genre.name %>の商品一覧（全<%= @products.total_count %>件）</p>
+  <% else %>
+    <p class="text-center mb-4">商品一覧（全<%= @products.total_count %>件）</p>
+  <% end %>
+  
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-3">
+            <div class="card mb-2">
+              <%= link_to "/items/#{product.id}" do %>
+                <%= image_tag product.image, class: "card-img-top", alt: product.name %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="card-text"><%= product.price %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+       <%= paginate @products %> 
+      </div>
+    </div>
+  </div>
+<% end %>
